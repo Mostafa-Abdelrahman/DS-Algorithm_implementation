@@ -13,7 +13,10 @@ class linkedList
         node *root;
     public:
     linkedList():root(NULL){}
-
+    bool isempty()
+    {
+        return !root;
+    }
     void insert_f(int item)
     {
         node *newnode= new node();
@@ -28,6 +31,11 @@ class linkedList
     }
     void delete_f()
     {
+        if(isempty())
+        {
+            cout<<"no node to delete ...the list is empty"<<endl;
+            return;
+        }
         node *dnode=root;
         root=root->next;
         delete dnode;
@@ -49,6 +57,11 @@ class linkedList
     }
     void delete_l()
     {
+        if(isempty())
+        {
+            cout<<"no node to delete ...the list is empty"<<endl;
+            return;
+        }
         if(!root->next)
             delete_f();
         else
@@ -63,6 +76,11 @@ class linkedList
     }
     void index_update(int index,int item)
     {
+        if(isempty())
+        {
+            cout<<"no node to update ...the list is empty"<<endl;
+            return;
+        }
         node* temp=root;
         for(int i=0;i<index;i++)
             temp=temp->next;
@@ -70,6 +88,11 @@ class linkedList
     }
     void value_update(int value,int item)
     {
+        if(isempty())
+        {
+            cout<<"no node to update ...the list is empty"<<endl;
+            return;
+        }
         node* temp=root;
         while(!temp)
         {
@@ -80,6 +103,11 @@ class linkedList
     }
     bool exist_search(int item)
     {
+        if(isempty())
+        {
+            cout<<"no node to search ...the list is empty"<<endl;
+            return 0;
+        }
         node* temp=root;
         while(!temp)
         {
@@ -91,6 +119,11 @@ class linkedList
     }
     int index_search(int item)
     {
+        if(isempty())
+        {
+            cout<<"no node to search ...the list is empty"<<endl;
+            return 0;
+        }
         node* temp=root;
         int i=0;
         while(!temp)
@@ -103,7 +136,11 @@ class linkedList
     }
     void insert_index(int ind,int item)
     {
-        
+        if(ind>list_num())
+        {
+            cout<<"out of index.. you enter index not insered yet"<<endl;
+            return;
+        }
         if(ind==0)
             insert_f(item);
         else{
@@ -132,6 +169,11 @@ class linkedList
     }
     void printList()
     {
+        if(isempty())
+        {
+            cout<<"no node to print ...the list is empty"<<endl;
+            return;
+        }
         node* temp=root;
         while(temp)
         {
@@ -154,6 +196,7 @@ int main(){
     list.insert_l(122);
     list.printList();
     list.insert_index(8,1);
+    list.insert_index(0,2);
     list.printList();
     cout<<list.list_num()<<endl;
 }
